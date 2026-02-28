@@ -1,0 +1,60 @@
+{
+  "name": "@mimindmendinc/waitlist-pow-solver",
+  "version": "1.0.0",
+  "description": "Instant Proof-of-Work solver and auto-submitter for Cloudflare Worker–powered waitlists — helping kids get mental-health support without technical barriers.",
+  "keywords": ["pow", "proof-of-work", "cloudflare", "waitlist", "solver", "mental-health"],
+  "license": "MIT",
+  "author": "Michigan MindMend Inc. (@p_perrien)",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "waitlist-pow-solver": "./bin/solve.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "bin",
+    "dist",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MiMindMendinc/waitlist-pow-solver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MiMindMendinc/waitlist-pow-solver/issues"
+  },
+  "homepage": "https://github.com/MiMindMendinc/waitlist-pow-solver#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "ora": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.30",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^3.0.9"
+  }
+}

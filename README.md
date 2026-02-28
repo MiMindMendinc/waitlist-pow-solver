@@ -1,6 +1,10 @@
 # waitlist-pow-solver
 
+[![npm version](https://img.shields.io/npm/v/@mimindmendinc/waitlist-pow-solver.svg?color=4A90D9)](https://www.npmjs.com/package/@mimindmendinc/waitlist-pow-solver)
+[![npm downloads](https://img.shields.io/npm/dm/@mimindmendinc/waitlist-pow-solver.svg?color=6DBF91)](https://www.npmjs.com/package/@mimindmendinc/waitlist-pow-solver)
+[![CI](https://github.com/MiMindMendinc/waitlist-pow-solver/actions/workflows/ci.yml/badge.svg)](https://github.com/MiMindMendinc/waitlist-pow-solver/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-4A90D9.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/MiMindMendinc/waitlist-pow-solver.svg?style=flat&color=A78BC0)](https://github.com/MiMindMendinc/waitlist-pow-solver/stargazers)
 
 > **Helping kids get the mental-health support they deserve — one waitlist spot at a time.**
 
@@ -10,6 +14,7 @@
 
 ## Table of Contents
 
+- [Quick Start](#quick-start)
 - [Why this project exists](#why-this-project-exists)
 - [How it works](#how-it-works)
 - [Installation](#installation)
@@ -18,6 +23,44 @@
 - [Accessibility](#accessibility)
 - [Contributing](#contributing)
 - [License](#license)
+
+---
+
+## Quick Start
+
+```bash
+# Install globally
+npm install -g @mimindmendinc/waitlist-pow-solver
+
+# Register on a waitlist in one command
+waitlist-pow-solver --url https://waitlist.example.com --email you@example.com
+```
+
+Or use it programmatically in your project:
+
+```bash
+npm install @mimindmendinc/waitlist-pow-solver
+```
+
+```ts
+import { solveAndSubmit } from '@mimindmendinc/waitlist-pow-solver';
+
+const result = await solveAndSubmit({
+  url: 'https://waitlist.example.com',
+  email: 'you@example.com',
+});
+console.log(result); // { success: true, position: 42 }
+```
+
+### CLI in action
+
+```
+$ waitlist-pow-solver --url https://waitlist.mindmend.org --email family@example.com --verbose
+
+⠸ Fetching challenge from https://waitlist.mindmend.org …
+⠼ Solving Proof-of-Work puzzle …
+✓ Successfully joined the waitlist  (position #17)
+```
 
 ---
 
@@ -75,13 +118,16 @@ cd waitlist-pow-solver
 # 2. Install dependencies
 npm install
 
-# 3. (Optional) copy and edit the environment config
+# 3. Build the project
+npm run build
+
+# 4. (Optional) copy and edit the environment config
 cp .env.example .env
 ```
 
 > **Note:** If the project is used as a library inside another app, install it with:
 > ```bash
-> npm install @mimindmend/waitlist-pow-solver
+> npm install @mimindmendinc/waitlist-pow-solver
 > ```
 
 ---
@@ -92,7 +138,7 @@ cp .env.example .env
 
 ```bash
 # Submit a waitlist entry for the given endpoint
-node solve.js --url https://waitlist.example.com --email user@example.com
+waitlist-pow-solver --url https://waitlist.example.com --email user@example.com
 ```
 
 | Flag | Description | Default |
@@ -104,8 +150,8 @@ node solve.js --url https://waitlist.example.com --email user@example.com
 
 ### Programmatic API
 
-```js
-import { solveAndSubmit } from './src/solver.js';
+```ts
+import { solveAndSubmit } from '@mimindmendinc/waitlist-pow-solver';
 
 // Solve the POW challenge and submit a waitlist registration
 const result = await solveAndSubmit({
@@ -124,8 +170,8 @@ if (result.success) {
 
 ```
 [solver] Fetching challenge from https://waitlist.example.com …
-[solver] Difficulty: 4 leading zeros
-[solver] Challenge solved in 23 ms  (nonce: 0000a1f3…)
+[solver] Difficulty: 4 leading zero(s)
+[solver] Challenge solved in 23 ms (nonce: 19482, hash: 0000a1f3…)
 [solver] Submitting entry for user@example.com …
 [solver] ✓ Successfully joined the waitlist (position #42)
 ```
@@ -190,3 +236,4 @@ For bug reports or feature requests, open a [GitHub Issue](https://github.com/Mi
 ## License
 
 [MIT](LICENSE) © 2026 Michigan MindMend Inc. (@p_perrien)
+
